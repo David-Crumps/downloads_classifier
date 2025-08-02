@@ -64,6 +64,11 @@ class MoveHandler(FileSystemEventHandler):
                 name = entry.name
                 self.check_text_files(entry, name)
                 self.check_pdf_files(entry, name)
+                self.check_images(entry, name)
+                self.check_document_files(entry, name)
+                self.check_zipped_files(entry, name)
+                self.check_audio_files(entry, name)
+                self.check_installer_files(entry, name)
     
     def check_text_files(self, entry, name: str):
         if name.endswith(".txt") or name.endswith(".txt".upper()):
