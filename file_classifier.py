@@ -37,8 +37,9 @@ class MoveHandler(FileSystemEventHandler):
         with scandir(downloads_directory) as entries:
             for entry in entries:
                 name = entry.name
+                self.check_text_files(entry, name)
     
-    def check_text_files(entry, name: str):
+    def check_text_files(self, entry, name: str):
         if name.endswith(".txt") or name.endswith(".txt".upper()):
             move_file(destination_paths["text"], entry, name)
             logging.info(f"Moved text file: {name}")
@@ -64,11 +65,6 @@ def main():
      except KeyboardInterrupt:
          observer.stop()
      observer.join()
-
-
-
-
-
 
 if __name__ == "__main__":
     main()
