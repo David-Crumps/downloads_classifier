@@ -18,7 +18,7 @@ folder_categories = {
     "audio" : "Audio",
     "text" : "Text",
     "document" : "Documents",
-    "installer" : "Installers"
+    "exe" : "Exes"
 }
 
 #Instantiated in createClassifierFolders()
@@ -97,6 +97,11 @@ class MoveHandler(FileSystemEventHandler):
             if name.endswith(audio_file_type) or name.endswith(audio_file_type.upper()):
                 moveFile(destination_paths["image"], entry, name)
                 logging.info(f"Moved audio file: {name}")
+
+    def check_installer_files(self, entry, name:str):
+        if name.endswith(".exe") or name.endswith(".exe".upper()):
+            moveFile(destination_paths["exe"], entry, name)
+            logging.info(f"Moved exe file: {name}")
 
 
 def main():
