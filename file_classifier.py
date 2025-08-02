@@ -21,7 +21,8 @@ folder_categories = {
     "exe" : "Exes"
 }
 
-#Instantiated in createClassifierFolders()
+#Instantiated in createClassifierDirectories()
+#Key is the same as the folder categories with value being the path to the directory
 destination_paths = {}
 
 image_file_types = [".jpg", ".jpeg", ".jpe", ".jif", ".jfif", "pjpeg", ".pjp", ".apng", ".png" , 
@@ -31,7 +32,7 @@ document_file_types = [".doc", ".docx", ".xls", "xlsx", ".ppt", ".pptx"]
 
 audio_file_types = [".mp3", ".wav", ".wma"]
 
-def createClassifierFolders():
+def createClassifierDirectories():
     for ext, folder in folder_categories.items():
         folder_path = downloads_directory / folder
 
@@ -113,7 +114,7 @@ def main():
      if  not downloads_directory.exists():
         print("Downloads directory not found!")
         return
-     createClassifierFolders()
+     createClassifierDirectories()
      logging.basicConfig(level=logging.INFO,
                          format='%(asctime)s - %(message)s',
                          datefmt='%Y-%m-%d %H:%M:%S')
